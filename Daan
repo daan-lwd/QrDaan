@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>QRdaan.nl</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<style>
+body{
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  font-family:Arial;
+  padding:40px;
+}
+input,select{
+  padding:10px;
+  margin:10px;
+}
+button{
+  padding:10px 20px;
+  background:#6366f1;
+  color:white;
+  border:none;
+}
+</style>
+</head>
+<body>
+
+<h1>QRdaan.nl</h1>
+<p>Gratis QR Code Generator</p>
+
+<select id="type">
+  <option value="url">Website</option>
+  <option value="text">Tekst</option>
+</select>
+
+<br>
+
+<input type="text" id="content" placeholder="Voer link of tekst in">
+<br>
+
+<input type="color" id="color" value="#000000">
+<br>
+
+<button onclick="generateQR()">Genereer QR</button>
+
+<br><br>
+<canvas id="qr"></canvas>
+
+<script>
+function generateQR(){
+  const content=document.getElementById("content").value;
+  const color=document.getElementById("color").value;
+
+  QRCode.toCanvas(document.getElementById("qr"),content,{
+    color:{dark:color,light:"#ffffff"}
+  });
+}
+</script>
+
+</body>
+</html>
